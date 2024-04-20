@@ -1,0 +1,42 @@
+variables:
+    REGISTRY_DEV: n1t1n1g1r1/devops-mif_images
+    USERNAME: "n1t1n1g1r1"
+
+    NAME_UNIT: mifx
+    CHART_NAME: mifx-helm-chart
+
+stages:
+    - build
+    - deploy
+
+dev_build:
+    stage: build
+    before_script:
+        - docker login $REGISTRY_DEV --username $USERNAME --password $TOKEN
+    script:
+        - sh run.sh -b $REGISTRY_DEV
+    interruptible: true
+    tags:
+        - mifx
+    only:
+        - /^testing-.*$/
+
+dev_deploy_compose:
+    stage: deploy
+    script:
+        - sh run.sh -d
+    tags:
+        - server_a
+    when: manual
+    only:
+        - /^testing-.*$/
+
+dev_deploy_k8s:
+    stage: deploy
+    script:
+        -sh run.sh -l $NAME_UNIT $CHART_NAME $REGISTRY_DEV
+    tags:
+        - server_b
+    when: manual
+    only:
+        - /^testing-.*$/

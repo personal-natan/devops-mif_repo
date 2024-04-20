@@ -1,0 +1,51 @@
+deployment:
+  name: mfix-app
+  replicas: 2
+
+service:
+  type: LoadBalancer
+  #nodePort: xxxx #if nodePort type
+
+repository:
+  name: n1t1n1g1r1/devops-mif_images
+  tag: testing
+
+container:
+  protocol: TCP
+  containerPort: 80
+
+securityContext:
+  runAsUser: 185
+  runAsGroup: 185
+  allowPrivilegeEscalation: false
+  runAsNonRoot: true
+
+livenessProbe:
+  httpGet:
+    path: /hello.php
+    port: 80
+    scheme: HTTP
+  initialDelaySeconds: 60
+  timeoutSeconds: 60
+  failureThreshold: 3
+
+readinessProbe:
+  failureThreshold: 3
+  httpGet:
+    path: /hello.php
+    port: 80
+    scheme: HTTP
+  initialDelaySeconds: 20
+  periodSeconds: 10
+
+resources:
+  limits:
+    memory: 512Mi
+    cpu: "1"
+  requests:
+    memory: 256Mi
+    cpu: "500m"
+
+imagePullPolicy: IfNotPresent
+imagePullSecrets:
+  - name: mysecret

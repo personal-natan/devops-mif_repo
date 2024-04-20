@@ -1,0 +1,12 @@
+version: "3.5"
+services:
+  mifx:
+    container_name: "mifx-php"
+    image: n1t1n1g1r1/devops-mif_images:testing
+    ports:
+      - "80:80"
+    restart: always
+    networks: 
+      mifx_net: {}
+networks:
+  mifx_net:
