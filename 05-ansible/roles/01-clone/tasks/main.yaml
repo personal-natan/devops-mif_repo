@@ -1,0 +1,22 @@
+--- 
+- name: Checking git
+  apt:
+    name: git
+    state: present
+
+- name: Check if the repo is exist
+  stat:
+    path: "{{ home }}"
+  register: status
+
+- name: Remove the repo if it exists
+  file:
+    path: "{{ home }}"
+    state: absent
+  when: status.stat.exists
+
+- name: Clone the repo
+  git:
+    repo: https://github.com/personal-natan/devops-mif_repo.git
+    dest: "{{ home }}"
+    version: main

@@ -1,0 +1,6 @@
+--- 
+
+- hosts: icl
+  user: root
+  roles:
+    - 04-deploy-docker

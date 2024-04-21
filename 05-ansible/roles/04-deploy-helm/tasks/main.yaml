@@ -1,0 +1,6 @@
+--- 
+- shell: cd "{{ home }}/04-kubernetes" &&  helm upgrade "{{ nameUnit }}" ./"{{ chartName }}" --set=image.repository="{{ repository }}" --set=image.tag="{{ tag }}"
+- shell: kubectl get all
+  register: out
+
+- debug: var=out.stdout

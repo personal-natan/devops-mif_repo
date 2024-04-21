@@ -1,0 +1,7 @@
+--- 
+
+- shell: sh "{{ home }}/run.sh" -b n1t1n1g1r1/devops-mif_images
+- shell: docker images
+  register: images
+
+- debug: var=images.stdout

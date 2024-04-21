@@ -1,0 +1,6 @@
+home: /home/ansible/devops-mif_repo
+
+nameUnit: mifx
+chartName: mifx-helm-chart
+repository: n1t1n1g1r1/devops-mif_images
+tag: latest

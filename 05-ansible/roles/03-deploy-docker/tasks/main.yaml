@@ -1,0 +1,7 @@
+--- 
+
+- shell: cd "{{ home }}" && sh run.sh -d
+- shell: docker ps | grep mifx
+  register: out
+
+- debug: var=out.stdout

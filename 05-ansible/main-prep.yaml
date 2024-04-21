@@ -1,0 +1,7 @@
+--- 
+
+- hosts: icl
+  user: root
+  roles:
+    - 01-clone
+    - 02-build-image
