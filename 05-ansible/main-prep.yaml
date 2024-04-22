@@ -1,6 +1,6 @@
 --- 
 
-- hosts: icl
+- hosts: mifx
   user: root
   roles:
     - 01-clone

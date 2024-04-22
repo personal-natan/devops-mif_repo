@@ -3,6 +3,3 @@ localhost ansible_connection=local
 
 [mifx]
 172.1.1.1 ansible_connection=ssh ansible_user=mifx ansible_password="password"
-
-[icl]
-170.187.228.175 ansible_connection=ssh ansible_user=root ansible_password="ICL2023icl#"

@@ -3,8 +3,9 @@ deployment:
   replicas: 2
 
 service:
-  type: LoadBalancer
-  #nodePort: xxxx #if nodePort type
+  # type: LoadBalancer
+  type: NodePort
+  nodePort: 30080
 
 repository:
   name: n1t1n1g1r1/devops-mif_images
