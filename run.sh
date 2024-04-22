@@ -1,5 +1,4 @@
 #!/bin/sh
-# token="qaqbam-tYrtih-tehzo0"
 
 Help()
 {
