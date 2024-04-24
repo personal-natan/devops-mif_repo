@@ -1,5 +1,6 @@
 --- 
-- shell: cd "{{ home }}/04-kubernetes" &&  helm upgrade "{{ nameUnit }}" ./"{{ chartName }}" --set=image.repository="{{ repository }}" --set=image.tag="{{ tag }}"
+# - shell: cd "{{ home }}/04-kubernetes" &&  helm upgrade "{{ nameUnit }}" ./"{{ chartName }}" --set=image.repository="{{ repository }}" --set=image.tag="{{ tag }}"
+- shell: cd "{{ home }}/04-kubernetes" &&  helm install "{{ nameUnit }}" ./"{{ chartName }}"
 - shell: kubectl get all
   register: out
 

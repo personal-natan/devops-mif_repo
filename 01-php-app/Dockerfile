@@ -77,5 +77,6 @@ RUN chown -R 200:185 /var/www/html/supervisord.pid
 
 RUN chmod -R g+rwX /var/www/html/public
 
+USER 200
 EXPOSE 80
 CMD ["supervisord", "-c", "/etc/supervisor.d/supervisord.ini"]

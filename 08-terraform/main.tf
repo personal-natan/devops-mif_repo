@@ -79,5 +79,4 @@ module "ec2-01" {
   ami = "ami-0c55b159cbfafe1f0"
   volume = 40
   volume_type = "gp2"
-  
 }
