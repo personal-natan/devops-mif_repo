@@ -22,20 +22,24 @@ securityContext:
   runAsNonRoot: true
 
 livenessProbe:
-  httpGet:
-    path: /health-check
+  # httpGet:
+  #   path: /health-check
+  #   port: 80
+  #   scheme: HTTP
+  tcpSocker:
     port: 80
-    scheme: HTTP
   initialDelaySeconds: 60
   timeoutSeconds: 60
   failureThreshold: 3
 
 readinessProbe:
   failureThreshold: 3
-  httpGet:
-    path: /health-check
+  # httpGet:
+  #   path: /health-check
+  #   port: 80
+  #   scheme: HTTP
+  tcpSocker:
     port: 80
-    scheme: HTTP
   initialDelaySeconds: 20
   periodSeconds: 10
 
