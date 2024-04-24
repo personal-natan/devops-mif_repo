@@ -23,7 +23,7 @@ securityContext:
 
 livenessProbe:
   httpGet:
-    path: /
+    path: /health-check
     port: 80
     scheme: HTTP
   initialDelaySeconds: 60
@@ -33,7 +33,7 @@ livenessProbe:
 readinessProbe:
   failureThreshold: 3
   httpGet:
-    path: /
+    path: /health-check
     port: 80
     scheme: HTTP
   initialDelaySeconds: 20

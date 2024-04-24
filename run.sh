@@ -58,12 +58,14 @@ while getopts ":bdslh" option; do
          if [ $# -lt 2 ]; then
             echo
             echo "the complete comment should be like this"
-            echo './run.sh -l $HELM_UNIT_NAME $HELM_CHART_NAME $NAMESPACE/REPOSITORY'
+            echo './run.sh -l $HELM_UNIT_NAME $HELM_CHART_NAME'
+            # echo './run.sh -l $HELM_UNIT_NAME $HELM_CHART_NAME $NAMESPACE/REPOSITORY'
             echo
             exit 1
          fi
          echo "deploying service to k8s cluster"
-         helm upgrade $2 ./04-kubernetes/$3 --set=image.repository=$4 --set=image.tag=testing
+         helm install $2 ./04-kubernetes/$3 
+         #helm upgrade $2 ./04-kubernetes/$3 --set=image.repository=$4 --set=image.tag=testing
          exit;;
 
       h)
