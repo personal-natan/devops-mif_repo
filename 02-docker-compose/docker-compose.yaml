@@ -4,7 +4,8 @@ services:
     container_name: "mifx-php"
     image: n1t1n1g1r1/devops-mif_images:testing
     ports:
-      - "80:80"
+      - "9997:80"
+      # - "81:8080"
     restart: always
     networks: 
       mifx_net: {}

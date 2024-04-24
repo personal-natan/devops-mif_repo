@@ -1,7 +1,13 @@
 --- 
 
-- shell: sh "{{ home }}/run.sh" -b n1t1n1g1r1/devops-mif_images
-- shell: docker images
-  register: images
+- shell: cd "{{ home }}/01-php-app" && docker build --network host -t n1t1n1g1r1/devops-mif_images:testing .
+  register: output
 
-- debug: var=images.stdout
+- debug: var=output.stdout
+
+- shell: docker push n1t1n1g1r1/devops-mif_images:testing
+
+- shell: docker images
+  # register: images
+
+# - debug: var=images.stdout

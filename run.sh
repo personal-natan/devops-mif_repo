@@ -39,7 +39,7 @@ while getopts ":bdslh" option; do
             exit 1
          fi
          echo "building image ---> $2:testing"
-	 cd 01-php-app/
+	      cd 01-php-app/
          docker build --network=host -t $2:testing .
          docker push $2:testing
          echo

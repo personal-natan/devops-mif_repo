@@ -11,13 +11,14 @@ stages:
 
 dev_build:
     stage: build
+    image: alpine-custom
     before_script:
         - docker login $REGISTRY_DEV --username $USERNAME --password $TOKEN
     script:
         - sh run.sh -b $REGISTRY_DEV
     interruptible: true
     tags:
-        - mifx
+        - mifx-docker
     only:
         - /^testing-.*$/
 
@@ -26,17 +27,17 @@ dev_deploy_compose:
     script:
         - sh run.sh -d
     tags:
-        - server_a
+        - server_a-shell
     when: manual
     only:
         - /^testing-.*$/
 
-dev_deploy_k8s:
-    stage: deploy
-    script:
-        -sh run.sh -l $NAME_UNIT $CHART_NAME $REGISTRY_DEV
-    tags:
-        - server_b
-    when: manual
-    only:
-        - /^testing-.*$/
+# dev_deploy_k8s:
+#     stage: deploy
+#     script:
+#         - sh run.sh -l $NAME_UNIT $CHART_NAME $REGISTRY_DEV
+#     tags:
+#         - server_b
+#     when: manual
+#     only:
+#         - /^testing-.*$/

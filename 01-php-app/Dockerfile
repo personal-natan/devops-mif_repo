@@ -52,6 +52,7 @@ COPY docker/php-fpm.conf /etc/php82/php-fpm.conf
 # Configure nginx
 COPY docker/nginx.conf /etc/nginx/
 COPY docker/svc.conf /etc/nginx/modules/
+COPY docker/svc_2.conf /etc/nginx/modules/
 
 # store PID of the nginx
 RUN mkdir -p /run/nginx/
@@ -77,6 +78,6 @@ RUN chown -R 200:185 /var/www/html/supervisord.pid
 
 RUN chmod -R g+rwX /var/www/html/public
 
-USER 200
+# USER 200
 EXPOSE 80
 CMD ["supervisord", "-c", "/etc/supervisor.d/supervisord.ini"]

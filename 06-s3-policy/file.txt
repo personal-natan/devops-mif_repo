@@ -1,0 +1,2 @@
+"arn:aws:s3:us-east-1:accound-id:s3-devops-automations"
+ARN : partition : service : region : accoun id : type(optional) / resource.id

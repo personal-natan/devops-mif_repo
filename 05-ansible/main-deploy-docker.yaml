@@ -1,6 +1,6 @@
 --- 
 
-- hosts: mifx
+- hosts: test
   user: root
   roles:
     - 03-deploy-docker
