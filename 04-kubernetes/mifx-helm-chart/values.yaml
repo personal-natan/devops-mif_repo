@@ -15,11 +15,11 @@ container:
   protocol: TCP
   containerPort: 80
 
-securityContext:
-  runAsUser: 200
-  runAsGroup: 185
-  allowPrivilegeEscalation: false
-  runAsNonRoot: true
+# securityContext:
+#   runAsUser: 200
+#   runAsGroup: 185
+#   allowPrivilegeEscalation: false
+#   runAsNonRoot: true
 
 livenessProbe:
   # httpGet:
