@@ -67,9 +67,14 @@ COPY src/ /var/www/html/public
 RUN touch /var/www/html/supervisord.log
 RUN touch /var/www/html/supervisord.pid
 
+RUN adduser -D 200
+RUN addgroup 185 && addgroup 200 185
+
 RUN chown -R nobody:185 /var/www/html
-RUN chown -R nobody:185 /var/www/html/supervisord.log
-RUN chown -R nobody:185 /var/www/html/supervisord.pid
+
+RUN chown -R 200:185 /var/www/html/supervisord.log
+RUN chown -R 200:185 /var/www/html/supervisord.pid
+
 RUN chmod -R g+rwX /var/www/html/public
 
 EXPOSE 80
